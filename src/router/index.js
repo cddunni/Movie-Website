@@ -18,6 +18,7 @@ const router = new VueRouter({
     {
       path: "/",
       name: "Dashboard",
+      redirect: '/home',
       component: Dashboard,
       children: [
         {
