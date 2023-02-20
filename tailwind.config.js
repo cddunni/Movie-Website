@@ -31,7 +31,7 @@ module.exports = {
       fontSize: {
       },
       boxShadow: {
-        // cardShadow: '0px 4px 30px rgba(0, 0, 0, 0.02)',
+        cardShadow: 'rgba(17, 17, 26, 0.1) 0px 0px 16px;',
         shadowOne: '0px 4px 8px rgba(167, 167, 167, 0.25)',
         shadowTwo: 'rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;'
         // iconShadow: '2px 2px 25px rgba(128, 128, 128, 0.15)'

@@ -13,12 +13,12 @@ Vue.use(VueRouter);
 
 const router = new VueRouter({
   mode: "history",
-  // base: import.meta.env.BASE_URL,
+  base: import.meta.env.BASE_URL,
   routes: [
     {
       path: "/",
       name: "Dashboard",
-      redirect: '/home',
+      redirect: '/home/tv-series',
       component: Dashboard,
       children: [
         {

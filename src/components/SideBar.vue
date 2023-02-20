@@ -1,7 +1,7 @@
 <template>
   <div class="border-r border-gray p-12 w-1/5">
     <div class="flex items-center relative">
-      <img class="" width="50px" height="50px" src="../assets/image/logo.png" />
+      <img class="w-[20%]" src="../assets/image/logo.png" />
       <p
         class="text-lg font-helvetica_sb font-bold text-center absolute left-11 text-primary-black"
       >

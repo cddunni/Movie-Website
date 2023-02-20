@@ -1,34 +1,39 @@
 <template>
   <div class="pl-10">
-    <nav class="flex space-x-5 text-">
-      <router-link :to="{ name: 'tv-series' }">
-        <p class="text-gray-100 font-helvetica_m text-base cursor-pointer">
+    <nav class="flex space-x-5 text-gray-100">
+      <router-link :to="{ name: 'tv-series' }" >
+        <a class="font-helvetica_m text-base cursor-pointer">
           TV series
-        </p>
+        </a>
       </router-link>
       <router-link :to="{ name: 'movies' }">
-        <p class="text-gray-100 font-helvetica_m text-base cursor-pointer">
+        <p class="font-helvetica_m text-base cursor-pointer">
           Movies
         </p>
       </router-link>
       <router-link :to="{ name: 'animes' }">
-        <p class="text-gray-100 font-helvetica_m text-base cursor-pointer">
+        <p class="font-helvetica_m text-base cursor-pointer">
           Animes
         </p>
       </router-link>
     </nav>
     <router-view />
+    <!-- <FilterSection/> -->
   </div>
-  <!-- <router-link :to="{ name: 'tv-series'}">
-        <p class="text-gray-100 font-helvetica_m text-base cursor-pointer">TV series</p>
-      </router-link> -->
 </template>
 
 <script>
+import FilterSection from '../../../components/FilterSection.vue'
 export default {
   name: "HomeView",
-  components: {},
+  components: {
+    FilterSection,
+  },
 };
 </script>
 
-<style></style>
+<style scoped>
+.router-link-exact-active {
+  color: #2F2E3E;
+}
+</style>

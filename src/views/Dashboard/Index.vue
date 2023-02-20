@@ -1,7 +1,7 @@
 <template>
     <div class="flex h-screen overflow-hidden">
         <SideBar />
-        <div class="overflow-scroll px-10 py-[54px] w-full">    
+        <div class="overflow-scroll pl-10 py-[54px] w-full">    
             <router-view />
         </div>
     </div>
