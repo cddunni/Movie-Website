@@ -50,7 +50,7 @@
     </div>
     </div>
   <div class="flex max-w-2/5 pt-6 pb-12 overflow-scroll space-x-5">
-    <div class="card border border-gray shadow-cardShadow cursor-pointer rounded-lg" v-for='item in watchList.results' :key='item.id' >
+    <div class="card min-w-[200px] border border-gray shadow-cardShadow cursor-pointer rounded-lg" v-for='item in watchList.results' :key='item.id' >
         <div class='relative'>
           <img :src='getImage(item.poster_path)' alt="movie_img" class='relative h-60 w-60 object-cover rounded-2xl saturate-50 hue-rotate-15' loading='lazy'/>
         </div>
@@ -65,7 +65,7 @@
     <p class="text-gray-200 text-lg font-helvetica_m">Movie List</p>
   <div class="grid grid-cols-5 gap-8 mt-6">
     <div class="card border border-gray shadow-cardShadow cursor-pointer rounded-lg" v-for='item in movieList.results' :key='item.id' >
-        <div class=''>
+        <div class='' @click="getMovieDetails(item.id)">
           <img :src='getImage(item.poster_path)' alt="movie_img" class='h-auto w-80 object-cover' loading='lazy'/>
         </div>
         <div class='p-5 text-sm'>
@@ -90,20 +90,26 @@
     </paginate>
   </div>  
   </div>
-  
+  <Modal title="Properpty">
+    <p>gdfxgdf</p>
+  </Modal>
   </div>
 </template>
 
 <script>
 import dayjs from 'dayjs'
 import { mapGetters, mapMutations, mapActions } from "vuex";
-
+import Modal from '../../../components/Modal.vue'
 export default {
     name: 'Movies',
+    components: {
+      Modal
+    },
     data() {
       return {
         imageUrl: 'https://www.themoviedb.org/t/p/w440_and_h660_face',
-        page: '1'
+        page: '1',
+        isOpen: true
       }
     },
       computed: {
@@ -111,9 +117,11 @@ export default {
       movieList: "getMovieList",
       bestArtist: "getPopularArtist",
       watchList: "getWatchList",
+      movieDetails: "getMovieDetails",
     }),
       },
       created() {
+        console.log(this.isOpen)
       this.fetchMovieList({page: 1});
       this.fetchPopularArtist({page: 1});
       this.fetchWatchList({page: 1});
@@ -133,7 +141,12 @@ export default {
         console.log(page);
         this.fetchPopularArtist({page});
       },
-      ...mapActions(['fetchMovieList', 'fetchPopularArtist', 'fetchWatchList']),
+      getMovieDetails(id) {
+        console.log(id)
+        this.fetchSingleMovie({movie_id:id});
+        this.isOpen = !this.isOpen;
+      },
+      ...mapActions(['fetchMovieList', 'fetchPopularArtist', 'fetchWatchList', 'fetchSingleMovie']),
       ...mapMutations({
       setMovieList: "setMovieList",
       setPopularArtist: "setPopularArtist",

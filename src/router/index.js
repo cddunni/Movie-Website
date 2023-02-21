@@ -1,13 +1,13 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import HomeView from "../views/Dashboard/Home/Index.vue";
-import Community from "../views/Dashboard/Community.vue";
-import ComingSoon from "../views/Dashboard/ComingSoon.vue";
-import Discovery from "../views/Dashboard/Discovery.vue";
-import Dashboard from "../views/Dashboard/Index.vue";
-import Movies from "../views/Dashboard/Home/Movies.vue"
-import Animes from "../views/Dashboard/Home/Animes.vue"
-import TVSeries from "../views/Dashboard/Home/TVSeries.vue"
+import HomeView from "../views/Home/Index.vue";
+import Community from "../views/Community.vue";
+import ComingSoon from "../views/ComingSoon.vue";
+import Discovery from "../views/Discovery.vue";
+import Dashboard from "../views/Index.vue";
+import Movies from "../views/Home/Movies.vue"
+import Animes from "../views/Home/Animes.vue"
+import TVSeries from "../views/Home/TVSeries.vue"
 
 Vue.use(VueRouter);
 
