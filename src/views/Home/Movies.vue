@@ -99,7 +99,7 @@
 <script>
 import dayjs from 'dayjs'
 import { mapGetters, mapMutations, mapActions } from "vuex";
-import Modal from '../../../components/Modal.vue'
+import Modal from '../../components/Modal.vue'
 export default {
     name: 'Movies',
     components: {

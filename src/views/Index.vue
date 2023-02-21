@@ -9,8 +9,8 @@
 </template>
 
 <script>
-import SideBar from '../../components/SideBar.vue'
-import FilterSection from '../../components/FilterSection.vue'
+import SideBar from '../components/SideBar.vue'
+import FilterSection from '../components/FilterSection.vue'
 
 export default {
     name: 'DashBoard',
