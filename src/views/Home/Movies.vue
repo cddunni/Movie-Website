@@ -90,7 +90,7 @@
     </paginate>
   </div>  
   </div>
-  <Modal title="Properpty">
+  <Modal ref="dialog" >
     <p>gdfxgdf</p>
   </Modal>
   </div>
@@ -99,7 +99,7 @@
 <script>
 import dayjs from 'dayjs'
 import { mapGetters, mapMutations, mapActions } from "vuex";
-import Modal from '../../components/Modal.vue'
+import Modal from '../../components/Dialog'
 export default {
     name: 'Movies',
     components: {
@@ -126,7 +126,7 @@ export default {
       this.fetchPopularArtist({page: 1});
       this.fetchWatchList({page: 1});
     },
-       methods: {
+    methods: {
       getImage(img) {
         return `${this.imageUrl}/${img}`
       },
@@ -142,9 +142,9 @@ export default {
         this.fetchPopularArtist({page});
       },
       getMovieDetails(id) {
-        console.log(id)
+        console.log(this.$refs)
         this.fetchSingleMovie({movie_id:id});
-        this.isOpen = !this.isOpen;
+        this.$refs.dialog.$el.showModal()
       },
       ...mapActions(['fetchMovieList', 'fetchPopularArtist', 'fetchWatchList', 'fetchSingleMovie']),
       ...mapMutations({
