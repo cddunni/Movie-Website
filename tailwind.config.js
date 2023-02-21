@@ -5,7 +5,7 @@ module.exports = {
   theme: {
     colors: {
       'purple': "#5034C4",
-      'red': '#FF6414',
+      'red': '#D22F27',
       'green_light': "#F4F7FA",
       'deep-grey': '#BAC2C9',
       'grey': '#8F8E9B',
@@ -16,7 +16,9 @@ module.exports = {
       'gray': "#E3E2E7",
       'green': '#1ecaab',
       'gray-100': '#ABABC4',
-      'gray-200': '#4f4f4f',
+      'gray-200': '#5B5B73',
+      'gray-300': '#8F8F8F',
+      'gray-400': '#515767',
       'light-gray': '#bdc4cc',
       'hover': "lighten(rgba(30, 202, 171, 0.2), 40%)"
     },

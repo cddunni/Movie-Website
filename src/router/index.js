@@ -23,7 +23,8 @@ const router = new VueRouter({
       children: [
         {
           path: "home",
-          name: "dashboard-home",
+          name: "home",
+          redirect: '/home/tv-series',
           component: HomeView,
           children: [
             {

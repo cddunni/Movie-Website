@@ -1,15 +1,31 @@
 <template>
-  <div class="grid grid-cols-5 gap-8 mt-10">
-    <div class="card border border-gray shadow-cardShadow cursor-pointer rounded-lg" v-for='item in tvSeries.results' :key='item.id' >
-        <div class=''>
-          <img :src='getImage(item.poster_path)' alt="movie_img" class='h-auto w-80 object-cover' loading='lazy'/>
-        </div>
-        <div class='p-5 text-sm'>
-          <p class=' font-helvetica_m'>{{item.name}}</p>
-          <p>{{formatDate(item.first_air_date)}}</p>
-        </div>
+  <div>
+    <div class="grid grid-cols-5 gap-8 mt-10">
+      <div class="card border border-gray shadow-cardShadow cursor-pointer rounded-lg" v-for='item in tvSeries.results' :key='item.id' >
+          <div class=''>
+            <img :src='getImage(item.poster_path)' alt="movie_img" class='h-auto w-80 object-cover' loading='lazy'/>
+          </div>
+          <div class='p-5 text-sm'>
+            <p class=' font-helvetica_m'>{{item.name}}</p>
+            <p>{{formatDate(item.first_air_date)}}</p>
+          </div>
+      </div>
     </div>
-    <!-- <VueTailwindPagination :current="users.page" :total="users.total_results" :per-page="10" @page-changed="current = $event"/> -->
+    <div class='flex justify-end items-center mt-8'>
+      <paginate
+      :page-count="tvSeries?.total_pages ?? 1"
+      :click-handler="paginate"
+      :prev-text="'Prev'"
+      :next-text="'Next'"
+      container-class="flex gap-4"
+      active-class='text-red border border-red'
+      prev-class='py-2 px-4 hover:text-red'
+      next-class='py-2 px-4 hover:text-red'
+      page-class='py-2 px-4'
+    
+      >
+    </paginate>
+  </div>  
   </div>
 </template>
 
@@ -33,14 +49,17 @@ export default {
     }),
     },
     created() {
-      this.fetchTvSeries();
+      this.fetchTvSeries({page: 1});
     },
     methods: {
       getImage(img) {
-      return `${this.imageUrl}/${img}`
+        return `${this.imageUrl}/${img}`
+      },
+      paginate(page) {
+        this.fetchTvSeries({page});
       },
       formatDate(date) {
-      return dayjs(date).format("MMM DD, YYYY")
+        return dayjs(date).format("MMM DD, YYYY")
       },
       ...mapActions(['fetchTvSeries']),
       ...mapMutations({
@@ -56,7 +75,6 @@ export default {
       transform:scale(1);
       filter:blur(0px);
       opacity:1;
-      /* box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px; */
       cursor: pointer;
       transform: scale(.90);
   }
