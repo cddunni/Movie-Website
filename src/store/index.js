@@ -16,7 +16,8 @@ export default new Vuex.Store({
     popularMovies: {},
     favouriteMovies: {},
     popularArtist: {},
-    watchList: {}
+    watchList: {},
+    movieDetails: {}
   },
   getters: {
     getTvSeries: (state) => state.tvSeries,
@@ -26,6 +27,7 @@ export default new Vuex.Store({
     getFavouriteMovies: (state) => state.favouriteMovies,
     getPopularArtist: (state) => state.popularArtist,
     getWatchList: (state) => state.watchList,
+    getMovieDetails: (state) => state.movieDetails,
   },
   mutations: {
     setTvSeries: (state, payload) => { state.tvSeries = payload; },
@@ -34,7 +36,8 @@ export default new Vuex.Store({
     setPopularMovies: (state, payload) => { state.popularMovies = payload; },
     setFavouriteMovies: (state, payload) => { state.favouriteMovies = payload; },
     setPopularArtist: (state, payload) => { state.popularArtist = payload; },
-    setWatchList: (state, payload) => { state.watchList = payload; }
+    setWatchList: (state, payload) => { state.watchList = payload; },
+    setMovieDetails: (state, payload) => { state.movieDetails = payload; }
   },
   actions: {
     fetchTvSeries: ({commit}, {page = 1}) => {
@@ -52,6 +55,16 @@ export default new Vuex.Store({
         axios.get( `${baseUrl}/discover/movie?api_key=${apiKey}&language=en-US&page=${page}`)
         .then((res) => {
           commit('setMovieList', res.data);
+        })
+      }catch (e) {
+        console.log(e);
+      }
+    },
+    fetchSingleMovie: ({commit}, {movie_id}) => {
+      try {
+        axios.get( `${baseUrl}/movie/${movie_id}?api_key=${apiKey}&language=en-US`)
+        .then((res) => {
+          commit('setMovieDetails', res.data);
         })
       }catch (e) {
         console.log(e);
